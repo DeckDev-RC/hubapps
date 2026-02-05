@@ -1,0 +1,52 @@
+{
+    "apps": [
+        {
+            "id": "1",
+            "name": "Adobe Photoshop 2026",
+            "version": "27.0.1",
+            "category": "Design",
+            "shortDescription": "Crie imagens incríveis e designs impactantes com a ferramenta líder mundial.",
+            "fullDescription": "O Adobe Photoshop é o software de edição de imagem mais avançado do mundo. Utilizado por milhões de designers, fotógrafos e artistas em todo o mundo para criar o impossível.\n\nEsta versão 2026 traz IA generativa avançada integrada diretamente no seu fluxo de trabalho.",
+            "changelog": "• Integração melhorada com Firefly v4\n• Processamento de GPU 2x mais rápido\n• Novos pincéis dinâmicos",
+            "requirements": "Windows 10 (64 bits) ou posterior\n16 GB de RAM\nGPU com suporte ao DirectX 12",
+            "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg",
+            "downloadUrl": "/uploads/photoshop.exe",
+            "fileSize": "1.2 GB",
+            "downloads": 1240,
+            "createdAt": "2026-01-15T10:00:00Z",
+            "updatedAt": "2026-02-01T14:30:00Z"
+        },
+        {
+            "id": "2",
+            "name": "Visual Studio Code",
+            "version": "1.92.0",
+            "category": "Desenvolvimento",
+            "shortDescription": "Editor de código fonte leve e poderoso que roda no seu desktop.",
+            "fullDescription": "O Visual Studio Code é um editor de código-fonte desenvolvido pela Microsoft para Windows, Linux e macOS. Ele inclui suporte para depuração, controle Git incorporado, realce de sintaxe, refatoração de código inteligente, trechos e muito mais.",
+            "changelog": "• Copilot Chat agora padrão\n• Melhorias no terminal integrado\n• Novo tema 'Midnight Apple'",
+            "requirements": "Windows 10 ou 11\n4 GB de RAM\n200 MB de espaço",
+            "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg",
+            "downloadUrl": "/uploads/vscode.exe",
+            "fileSize": "89.5 MB",
+            "downloads": 850,
+            "createdAt": "2026-02-01T09:00:00Z",
+            "updatedAt": "2026-02-04T10:00:00Z"
+        },
+        {
+            "id": "3",
+            "name": "Microsoft Teams",
+            "version": "24.1.0",
+            "category": "Comunicação",
+            "shortDescription": "Conecte-se e colabore em um só lugar com o Microsoft Teams.",
+            "fullDescription": "O Microsoft Teams é o hub para o trabalho em equipe no Microsoft 365. Convide todos com quem você trabalha para conversar, se encontrar, ligar e colaborar, tudo em um só lugar, não importa onde você esteja.",
+            "changelog": "• Chamadas espaciais em 3D\n• Redução de ruído por IA aprimorada\n• Modo 'Focus' integrado",
+            "requirements": "Windows 10 ou posterior\n8 GB de RAM\nCâmera e Microfone",
+            "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg",
+            "downloadUrl": "/uploads/teams.exe",
+            "fileSize": "120 MB",
+            "downloads": 2100,
+            "createdAt": "2026-02-03T11:00:00Z",
+            "updatedAt": "2026-02-03T11:00:00Z"
+        }
+    ]
+}

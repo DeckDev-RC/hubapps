@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-apple-bg: #000000;
+  --color-apple-surface: rgba(255, 255, 255, 0.05);
+  --color-apple-text: #ffffff;
+  --color-apple-secondary: #8e8e93;
+  --color-apple-accent: #007aff;
+  --color-apple-success: #34c759;
+  --color-apple-danger: #ff3b30;
+
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+
+  --blur-xs: 2px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-apple-bg text-apple-text font-sans antialiased;
+  background: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 100%);
+  min-height: 100vh;
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.apple-button-primary {
+  @apply bg-apple-accent hover:bg-blue-600 text-white rounded-xl px-6 py-2.5 font-medium transition-all active:scale-95;
+}
+
+.apple-button-secondary {
+  @apply bg-white/10 hover:bg-white/15 text-white rounded-xl px-6 py-2.5 font-medium transition-all active:scale-95;
+}
+
+.apple-input {
+  @apply bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-apple-accent/50 transition-all;
+}
+
+/* Custom transitions for Framer Motion */
+.page-transition {
+  @apply transition-opacity duration-500 ease-in-out;
+}
