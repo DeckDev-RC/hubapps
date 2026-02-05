@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Calendar, Info } from 'lucide-react';
-import api from '../services/api';
+import api, { API_BASE_URL } from '../services/api';
 
 const AppCard = ({ app, onClick }) => {
     const isNew = new Date(app.createdAt) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
@@ -29,7 +29,7 @@ const AppCard = ({ app, onClick }) => {
             <div className="flex items-center gap-5 mb-6">
                 <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center overflow-hidden border border-white/10 shrink-0">
                     <img
-                        src={app.logoUrl.startsWith('/') ? `${api.defaults.baseURL.replace('/api', '')}${app.logoUrl}` : app.logoUrl}
+                        src={app.logoUrl.startsWith('/') ? `${API_BASE_URL.replace('/api', '')}${app.logoUrl}` : app.logoUrl}
                         alt={app.name}
                         className="w-full h-full object-cover"
                     />

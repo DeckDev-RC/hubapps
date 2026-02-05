@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, Shield, HardDrive, Info, CheckCircle2 } from 'lucide-react';
-import api from '../services/api';
+import api, { API_BASE_URL } from '../services/api';
 
 const Modal = ({ app, onClose }) => {
     if (!app) return null;
 
     const handleDownload = async () => {
         try {
-            const baseUrl = api.defaults.baseURL.replace('/api', '');
+            const baseUrl = API_BASE_URL.replace('/api', '');
             await api.post(`/apps/${app.id}/download`);
             window.location.href = `${baseUrl}${app.downloadUrl}`;
         } catch (error) {
@@ -47,7 +47,7 @@ const Modal = ({ app, onClose }) => {
                         <div className="w-full md:w-1/3 p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10 bg-white/[0.02]">
                             <div className="w-32 h-32 mx-auto md:mx-0 rounded-[2rem] bg-white/5 flex items-center justify-center overflow-hidden border border-white/10 shadow-2xl mb-8">
                                 <img
-                                    src={app.logoUrl.startsWith('/') ? `${api.defaults.baseURL.replace('/api', '')}${app.logoUrl}` : app.logoUrl}
+                                    src={app.logoUrl.startsWith('/') ? `${API_BASE_URL.replace('/api', '')}${app.logoUrl}` : app.logoUrl}
                                     alt={app.name}
                                     className="w-full h-full object-cover"
                                 />
