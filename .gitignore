@@ -1,0 +1,36 @@
+# Dependencies
+**/node_modules/
+**/dist/
+**/build/
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+client/.env
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific
+server/uploads/*
+!server/uploads/.gitkeep
+server/logos/*
+!server/logos/.gitkeep
+server/data/*.tmp
+# server/data/apps.json # Keep if it contains default MVP data, otherwise ignore
+
+# System
+bin/
+obj/
