@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, Shield, HardDrive, Info, CheckCircle2 } from 'lucide-react';
-import api, { getAssetUrl } from '../services/api';
+import api, { getAssetUrl, API_BASE_URL } from '../services/api';
 
 const Modal = ({ app, onClose }) => {
     if (!app) return null;
@@ -15,6 +15,8 @@ const Modal = ({ app, onClose }) => {
             window.location.href = getAssetUrl(app.downloadUrl);
         }
     };
+
+    const baseUrl = API_BASE_URL.replace('/api', '');
 
     return (
         <AnimatePresence>
