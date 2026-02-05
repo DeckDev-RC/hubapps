@@ -4,7 +4,7 @@ import {
     Plus, LogOut, Package, DownloadCloud, RotateCw, Trash2, Edit2,
     Search, Upload, X, Check, Loader2, BarChart3, Clock
 } from 'lucide-react';
-import api, { API_BASE_URL } from '../services/api';
+import api, { getAssetUrl } from '../services/api';
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -89,7 +89,7 @@ const AdminPanel = () => {
                 changelog: app.changelog,
                 requirements: app.requirements
             });
-            setPreviews({ logo: app.logoUrl.startsWith('/') ? `${API_BASE_URL.replace('/api', '')}${app.logoUrl}` : app.logoUrl });
+            setPreviews({ logo: getAssetUrl(app.logoUrl) });
         } else {
             resetForm();
         }
@@ -212,7 +212,7 @@ const AdminPanel = () => {
                                 {apps.map(app => (
                                     <tr key={app.id} className="hover:bg-white/[0.02] transition-colors">
                                         <td className="p-6 flex items-center gap-4">
-                                            <img src={`${API_BASE_URL.replace('/api', '')}${app.logoUrl}`} alt="" className="w-10 h-10 rounded-lg bg-white/5 object-cover" />
+                                            <img src={getAssetUrl(app.logoUrl)} alt="" className="w-10 h-10 rounded-lg bg-white/5 object-cover" />
                                             <div>
                                                 <div className="font-bold">{app.name}</div>
                                                 <div className="text-xs text-apple-secondary">{app.category}</div>
