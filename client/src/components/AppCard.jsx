@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Calendar, Info } from 'lucide-react';
+import api from '../services/api';
 
 const AppCard = ({ app, onClick }) => {
     const isNew = new Date(app.createdAt) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
