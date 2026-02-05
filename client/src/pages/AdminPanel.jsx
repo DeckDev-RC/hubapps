@@ -107,6 +107,18 @@ const AdminPanel = () => {
         setShowModal(true);
     };
 
+    const handleMdFileUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                setDocFormData(prev => ({ ...prev, content: event.target.result }));
+                toast.success('Arquivo Markdown carregado!');
+            };
+            reader.readAsText(file);
+        }
+    };
+
     const handleAppSubmit = async (e) => {
         e.preventDefault();
         const data = new FormData();
@@ -404,7 +416,13 @@ const AdminPanel = () => {
 
                                         {docFormData.type === 'markdown' ? (
                                             <div className="space-y-4" data-color-mode="dark">
-                                                <label className="text-sm pl-1">Conteúdo (Markdown)</label>
+                                                <div className="flex items-center justify-between pl-1">
+                                                    <label className="text-sm font-bold">Conteúdo (Markdown)</label>
+                                                    <label className="text-[10px] bg-apple-accent/20 text-apple-accent px-2 py-1 rounded-md cursor-pointer hover:bg-apple-accent/30 transition-colors">
+                                                        Upar arquivo .md
+                                                        <input type="file" className="hidden" accept=".md" onChange={handleMdFileUpload} />
+                                                    </label>
+                                                </div>
                                                 <MDEditor
                                                     value={docFormData.content}
                                                     onChange={(val) => setDocFormData({ ...docFormData, content: val || '' })}
