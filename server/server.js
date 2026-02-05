@@ -10,6 +10,7 @@ import fs from 'fs';
 // Routes
 import appRoutes from './routes/apps.js';
 import authRoutes from './routes/auth.js';
+import docRoutes from './routes/docs.js';
 
 dotenv.config();
 
@@ -20,7 +21,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Ensure directories exist
-const dirs = ['uploads', 'logos', 'data'];
+const dirs = ['uploads', 'logos', 'data', 'docs/markdown', 'docs/pdfs'];
 dirs.forEach(dir => {
   const dirPath = path.join(__dirname, dir);
   if (!fs.existsSync(dirPath)) {
@@ -46,10 +47,12 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Static files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/logos', express.static(path.join(__dirname, 'logos')));
+app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
 // API Routes
 app.use('/api/apps', appRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/docs', docRoutes);
 
 // Root
 app.get('/', (req, res) => {

@@ -15,8 +15,8 @@ const Header = () => {
 
                 <nav className="hidden md:flex items-center gap-8">
                     <Link to="/" className="text-sm font-medium hover:text-apple-accent transition-colors">Portfólio</Link>
-                    <a href="#" className="text-sm font-medium hover:text-apple-accent transition-colors">Documentação</a>
-                    <a href="#" className="text-sm font-medium hover:text-apple-accent transition-colors">Suporte</a>
+                    <Link to="/docs" className="text-sm font-medium hover:text-apple-accent transition-colors">Documentação</Link>
+                    <a href="https://wa.me/550000000000" target="_blank" className="text-sm font-medium hover:text-apple-accent transition-colors">Suporte</a>
                 </nav>
 
                 <div className="flex items-center gap-4">

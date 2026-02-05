@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home';
 import AdminLogin from './pages/AdminLogin';
 import AdminPanel from './pages/AdminPanel';
+import Docs from './pages/Docs';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -21,6 +22,7 @@ function App() {
       <div className="text-white selection:bg-apple-accent selection:text-white">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/docs" element={<Docs />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route
             path="/admin/dashboard"
