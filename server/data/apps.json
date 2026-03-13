@@ -13,6 +13,7 @@
             "downloadUrl": "/uploads/photoshop.exe",
             "fileSize": "1.2 GB",
             "downloads": 1240,
+            "allowedDepartments": [],
             "createdAt": "2026-01-15T10:00:00Z",
             "updatedAt": "2026-02-01T14:30:00Z"
         },
@@ -29,6 +30,7 @@
             "downloadUrl": "/uploads/vscode.exe",
             "fileSize": "89.5 MB",
             "downloads": 850,
+            "allowedDepartments": [],
             "createdAt": "2026-02-01T09:00:00Z",
             "updatedAt": "2026-02-04T10:00:00Z"
         },
@@ -45,6 +47,7 @@
             "downloadUrl": "/uploads/teams.exe",
             "fileSize": "120 MB",
             "downloads": 2100,
+            "allowedDepartments": [],
             "createdAt": "2026-02-03T11:00:00Z",
             "updatedAt": "2026-02-03T11:00:00Z"
         }

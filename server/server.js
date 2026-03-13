@@ -11,6 +11,8 @@ import fs from 'fs';
 import appRoutes from './routes/apps.js';
 import authRoutes from './routes/auth.js';
 import docRoutes from './routes/docs.js';
+import userRoutes from './routes/users.js';
+import departmentRoutes from './routes/departments.js';
 
 dotenv.config();
 
@@ -29,11 +31,20 @@ dirs.forEach(dir => {
   }
 });
 
-// Initialize apps.json if not exists
-const dbPath = path.join(__dirname, 'data', 'apps.json');
-if (!fs.existsSync(dbPath)) {
-  fs.writeFileSync(dbPath, JSON.stringify({ apps: [] }, null, 2));
-}
+// Initialize JSON data files if not exists
+const dataFiles = [
+  { file: 'apps.json', initial: { apps: [] } },
+  { file: 'users.json', initial: { users: [] } },
+  { file: 'departments.json', initial: { departments: [] } }
+];
+
+dataFiles.forEach(({ file, initial }) => {
+  const filePath = path.join(__dirname, 'data', file);
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, JSON.stringify(initial, null, 2));
+    console.log(`Initialized ${file}`);
+  }
+});
 
 // Middleware
 app.use(helmet({
@@ -53,6 +64,8 @@ app.use('/docs', express.static(path.join(__dirname, 'docs')));
 app.use('/api/apps', appRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/docs', docRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/departments', departmentRoutes);
 
 // Root
 app.get('/', (req, res) => {

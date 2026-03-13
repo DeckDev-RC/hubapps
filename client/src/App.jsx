@@ -8,11 +8,21 @@ import Home from './pages/Home';
 import AdminLogin from './pages/AdminLogin';
 import AdminPanel from './pages/AdminPanel';
 import Docs from './pages/Docs';
+import UserLogin from './pages/UserLogin';
 
-// Protected Route Component
-const ProtectedRoute = ({ children }) => {
+const ProtectedAdminRoute = ({ children }) => {
   const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  
   if (!token) return <Navigate to="/admin" />;
+  if (user.role !== 'admin') return <Navigate to="/" />;
+  
+  return children;
+};
+
+const ProtectedUserRoute = ({ children }) => {
+  const token = localStorage.getItem('token');
+  if (!token) return <Navigate to="/login" />;
   return children;
 };
 
@@ -21,15 +31,30 @@ function App() {
     <Router>
       <div className="text-white selection:bg-apple-accent selection:text-white">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/docs" element={<Docs />} />
+          <Route path="/login" element={<UserLogin />} />
+          <Route
+            path="/"
+            element={
+              <ProtectedUserRoute>
+                <Home />
+              </ProtectedUserRoute>
+            }
+          />
+          <Route
+            path="/docs"
+            element={
+              <ProtectedUserRoute>
+                <Docs />
+              </ProtectedUserRoute>
+            }
+          />
           <Route path="/admin" element={<AdminLogin />} />
           <Route
             path="/admin/dashboard"
             element={
-              <ProtectedRoute>
+              <ProtectedAdminRoute>
                 <AdminPanel />
-              </ProtectedRoute>
+              </ProtectedAdminRoute>
             }
           />
         </Routes>
