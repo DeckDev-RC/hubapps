@@ -13,7 +13,8 @@ RUN npm run build
 
 # Production stage
 FROM nginx:stable-alpine
+RUN apk add --no-cache gettext
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/bin/sh", "-c", ": \"${BACKEND_ORIGIN:?BACKEND_ORIGIN is required}\"; envsubst '$BACKEND_ORIGIN' < /etc/nginx/templates/default.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"]
