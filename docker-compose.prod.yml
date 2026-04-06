@@ -1,0 +1,48 @@
+services:
+  backend:
+    container_name: hubapps-backend
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      PORT: 5000
+      NODE_ENV: production
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH}
+    volumes:
+      - hubapps_data:/app/data
+      - hubapps_uploads:/app/uploads
+      - hubapps_logos:/app/logos
+      - hubapps_docs:/app/docs
+    restart: unless-stopped
+    networks:
+      - hubapps
+
+  frontend:
+    container_name: hubapps-frontend
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-/api}
+    environment:
+      BACKEND_ORIGIN: ${BACKEND_ORIGIN:-http://hubapps-backend:5000}
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - hubapps
+      - coolify
+
+volumes:
+  hubapps_data:
+  hubapps_uploads:
+  hubapps_logos:
+  hubapps_docs:
+
+networks:
+  hubapps:
+    driver: bridge
+  coolify:
+    external: true
